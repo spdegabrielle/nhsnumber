@@ -5,18 +5,14 @@
 ;; 10 digits
 ;; last is check digit
 (provide 
-; calculate-nhs-number-check-digit
- valid-nhs-number? 
- )
+ ; calculate-nhs-number-check-digit
+ valid-nhs-number? )
 
-
-(define (string->list-of-digits str)
- 
-  )
-
-(define (number->list-of-digits number)
-   (number->string str))
-  )
+(define (valid-nhs-number? nhsnumstring)
+  (if (regexp-match #px"^\\d{10}$" (regexp-match #px"^\\d{10}$" "12345678A0"))
+      ()
+      (error 'not-a-10-digit-number)
+      ))
 
 
 (define (calculate-nhs-number-check-digit list-of-digits)
@@ -27,16 +23,10 @@
       [else c]
       )))
 
-(define (valid-nhs-number? num-or-string)
- (cond
-   [(string? num-or-string) (validate list-of-digits)]
-  
-  
-  )
 
 (define (validate list-of-digits)
   (and (last list-of-digits)
-  (equal? 
-   (calculate-nhs-number-check-digit (take list-of-digits 9))
-   (last list-of-digits)
-   )))
+       (equal? 
+        (calculate-nhs-number-check-digit (take list-of-digits 9))
+        (last list-of-digits)
+        )))
